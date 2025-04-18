@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="refresh" content="0; url=/ecommerce-clone/" />
+    <meta charset="UTF-8" />
     <script>
-      const redirectTo = location.pathname.replace("/ecommerce-clone", "");
-      location.replace("/ecommerce-clone/" + redirectTo);
+      const base = "/ecommerce-clone";
+      const current = location.pathname;
+
+      // if already starts with base, no need to add again
+      if (!current.startsWith(base)) {
+        location.replace(base + current);
+      } else {
+        // already at correct path, maybe no route matched — go to homepage
+        location.replace(base + "/");
+      }
     </script>
   </head>
   <body></body>
