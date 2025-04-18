@@ -6,14 +6,16 @@
       const base = "/ecommerce-clone";
       const current = location.pathname;
 
-      // if already starts with base, no need to add again
+      // Prevent redirect loop by checking if we're already at the right path
       if (!current.startsWith(base)) {
-        location.replace(base + current);
-      } else {
-        // already at correct path, maybe no route matched — go to homepage
-        location.replace(base + "/");
+        const newPath = base + current;
+        // Remove any duplicate slashes
+        const cleanedPath = newPath.replace(/\/+/g, "/");
+        location.replace(cleanedPath);
       }
     </script>
   </head>
-  <body></body>
+  <body>
+    <p>Redirecting...</p>
+  </body>
 </html>
