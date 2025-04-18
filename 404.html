@@ -1,24 +1,22 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <script>
-      // When a user hits a non-root route directly (like /create), redirect them to the correct path
-      const base = "/ecommerce-clone";
-      const current = location.pathname;
-
-      // Avoid redirect loop
-      if (!current.startsWith(base)) {
-        const target = base + current;
-        const cleaned = target.replace(/\/+/g, "/");
-        location.replace(cleaned); // Redirect to base path
-      } else {
-        // If we are already within /ecommerce-clone, fallback to homepage
-        location.replace(base + "/");
-      }
-    </script>
-  </head>
-  <body>
-    <p>Redirecting...</p>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>404 - Redirecting...</title>
+  <script>
+    // GitHub Pages redirect logic
+    const basePath = "/ecommerce-clone";
+    const path = location.pathname;
+    if (!path.startsWith(basePath)) {
+      // If the path doesn't start with /ecommerce-clone, redirect it
+      location.replace(basePath + path);
+    } else {
+      // Handle cases where paths have multiple slashes (normalize the URL)
+      location.replace(path.replace(/\/+/g, '/'));
+    }
+  </script>
+</head>
+<body>
+  <p>Redirecting...</p>
+</body>
 </html>
