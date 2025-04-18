@@ -3,16 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <script>
+      // When a user hits a non-root route directly (like /create), redirect them to the correct path
       const base = "/ecommerce-clone";
       const current = location.pathname;
 
-      // Prevent redirect loop by checking if already starts with base
+      // Avoid redirect loop
       if (!current.startsWith(base)) {
         const target = base + current;
         const cleaned = target.replace(/\/+/g, "/");
-        location.replace(cleaned);
+        location.replace(cleaned); // Redirect to base path
       } else {
-        // If already starts with base, fallback to homepage
+        // If we are already within /ecommerce-clone, fallback to homepage
         location.replace(base + "/");
       }
     </script>
